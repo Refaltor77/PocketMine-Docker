@@ -77,6 +77,7 @@ mysql -h 127.0.0.1 -P 3306 -u pocketmine -p
 
 Here is the directory structure for this project:
 
+````
 project/
 ├── docker-compose.yml    # Docker Compose file
 ├── data/
@@ -88,3 +89,4 @@ project/
 ├── start.sh          # Start script
 ├── PocketMine-MP.phar
 └── config.yml        # General configuration
+````

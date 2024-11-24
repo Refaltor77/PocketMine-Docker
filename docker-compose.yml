@@ -1,0 +1,33 @@
+services:
+  # Service PocketMine
+  server:
+    image: server
+    container_name: pocketmine-server
+    ports:
+      - "19132:19132/udp" # PocketMine utilise UDP
+    volumes:
+      - "./data/worlds:/server/worlds/"   # Save les mondes persistants
+      - "./data/players:/server/players/" # Save les données des joueurs
+    depends_on:
+      - db # Assure que MariaDB est prêt avant de démarrer le serveur (au cas zou)
+    environment:
+      PM_DB_HOST: db
+      PM_DB_PORT: 3306
+      PM_DB_USER: pocketmine
+      PM_DB_PASSWORD: pocketmine_password
+      PM_DB_NAME: pocketmine_database
+
+  # Service MariaDB
+  db:
+    image: mariadb:10.5
+    container_name: mariadb
+    restart: always
+    ports:
+      - "3306:3306" # Port MySQL/MariaDB
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: pocketmine_database
+      MYSQL_USER: pocketmine
+      MYSQL_PASSWORD: pocketmine_password
+    volumes:
+      - "./data/db:/var/lib/mysql" # Volume pour stocker les données de la base de données

@@ -79,14 +79,16 @@ Here is the directory structure for this project:
 
 ````
 project/
-├── docker-compose.yml    # Docker Compose file
+├── docker-compose.yml  
+├── Dockerfile  
 ├── data/
-│   ├── worlds/           # Minecraft worlds (persistent)
-│   ├── players/          # Player data
-│   └── db/               # MariaDB data
+│   ├── worlds/       
+│   ├── players/      
+│   └── db/            
 └── server/
-├── plugins/          # PocketMine plugins
-├── start.sh          # Start script
-├── PocketMine-MP.phar
-└── config.yml        # General configuration
+├── plugins/         
+└── resource_packs/
+└── resources/
+└── worlds/
+└── configurations/
 ````
